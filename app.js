@@ -1,11 +1,15 @@
 const express = require("express");
-const indexRouter = require("./routes/indexRouter");
-const path = require("path");
 const app = express();
 
+
+const populatedb = require("./db/populatedb")
+populatedb();
+
+const path = require("path");
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+const indexRouter = require("./routes/indexRouter");
 app.get("/", indexRouter);
 
 const PORT = process.env.PORT || 8080;
